@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>윤영 연대기</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700;900&family=Cormorant+Garamond:wght@600;700&display=swap">
+  <link rel="stylesheet" href="style.css?v=54">
+  <style>
+    /* 연대기 설계도: 선 하나가 2022부터 지금까지 끊기지 않고 지그재그로 이어진다.
+       세로선(시작) → 시기 머리(◆) → 연도 줄(위 · 오른쪽 선) → 다음 시기 머리(위 · 왼쪽 선) → 연도 줄 → 지금
+       연도 칸 순서: 연도 → 그때 한 활동 → 그해를 한 문장으로 → 인생 서사 한 문단 → 핵심 프로젝트 링크 */
+    body.map {
+      --rail: #6d6964; --pink: #d0598f;
+      --num: "Cormorant Garamond", "Noto Serif KR", serif;
+      font-variant-numeric: lining-nums;
+    }
+    .map .hero { padding: 96px 24px 24px; }
+
+    .tl { max-width: 1200px; margin: 0 auto; padding: 0 24px 40px; }
+    .tl-in { margin-left: 8%; }
+
+    /* 시작 세로선 */
+    .spine { border-left: 1px solid var(--rail); height: 120px; position: relative; }
+    .spine span { position: absolute; left: 18px; bottom: 12px; font-size: 12px; letter-spacing: .12em; color: var(--ink-3); }
+
+    /* 시기 머리 */
+    .era { border-left: 1px solid var(--rail); position: relative; padding: 24px 0 56px 44px; }
+    .era.next { border-top: 1px solid var(--rail); padding-top: 56px; }
+    .era::before { content: ""; position: absolute; left: -11px; top: 46px; width: 20px; height: 20px; background: var(--pink); transform: rotate(45deg); }
+    .era.next::before { top: 78px; }
+    .era-range { font-family: var(--num); font-size: 26px; color: var(--ink-2); }
+    .era-name { font-family: "Noto Serif KR", serif; font-weight: 900; font-size: 44px; color: var(--ink); line-height: 1.2; }
+    .era-q { margin-top: 18px; max-width: 640px; }
+    .era-q .lb { display: block; font-size: 11px; letter-spacing: .12em; color: var(--ink-3); margin-bottom: 6px; }
+    .era-q p { margin: 0; font-family: "Noto Serif KR", serif; font-weight: 700; font-size: 19px; line-height: 1.6; color: var(--ink); }
+    .era-q p + p { margin-top: 6px; }
+
+    /* 띠: 위 선 + 오른쪽 선 */
+    .band { border-top: 1px solid var(--rail); border-right: 1px solid var(--rail); display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0 32px; padding: 0 32px 56px; }
+
+    /* 연도 칸 */
+    .yr { position: relative; padding-top: 58px; }
+    .yr::before { content: ""; position: absolute; left: 8px; top: 0; height: 30px; border-left: 1px solid var(--rail); }
+    .yr::after { content: ""; position: absolute; left: 4px; top: 28px; width: 9px; height: 9px; border-radius: 50%; background: var(--ink); }
+    .yr h3 { margin: 0 0 10px; font-family: var(--num); font-weight: 700; font-size: 38px; line-height: 1; color: var(--ink); }
+    .yr h3 small { font-family: "Pretendard", sans-serif; font-size: 14px; font-weight: 500; margin-left: 6px; color: var(--ink-2); }
+    .yr .ev { list-style: none; margin: 0 0 18px; padding: 0; font-size: 13.5px; color: var(--ink-2); }
+    .yr .ev li::before { content: "· "; }
+    .yr .ttl { margin: 0 0 8px; font-size: 15.5px; font-weight: 800; color: var(--ink); line-height: 1.45; }
+    .yr .life { margin: 0; font-size: 13.5px; line-height: 1.85; color: var(--ink-2); }
+    .yr .pl { margin: 16px 0 0; padding: 12px 0 0; border-top: 1px solid var(--line); font-size: 13px; }
+    .yr .pl div + div { margin-top: 4px; }
+    .yr .pl a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--ink-3); }
+    .yr .pl a:hover { text-decoration-color: var(--ink); }
+    .yr .yq { margin-top: 18px; }
+    .yr .yq .btn { font-size: 13px; padding: 10px 16px; }
+    .yr .pl .lb { display: block; font-size: 11px; letter-spacing: .12em; color: var(--ink-3); margin-bottom: 4px; }
+
+    /* 지금 칸 */
+    .now { grid-column: span 3; position: relative; padding-top: 58px; }
+    .now::before { content: ""; position: absolute; left: 8px; top: 0; height: 30px; border-left: 1px solid var(--rail); }
+    .now::after { content: ""; position: absolute; left: 3px; top: 26px; width: 11px; height: 11px; border-radius: 50%; background: var(--pink); }
+    .now .tag { font-family: var(--num); font-size: 38px; font-weight: 700; color: var(--ink); line-height: 1; margin: 0 0 16px; }
+    .now h3 { font-family: "Noto Serif KR", serif; font-size: 22px; margin: 0 0 10px; }
+    .now p { margin: 0 0 12px; color: var(--ink-2); font-size: 14.5px; }
+    .now .lb { font-size: 11px; letter-spacing: .12em; color: var(--ink-3); margin: 18px 0 4px; }
+    .now .cta { margin-top: 22px; }
+
+    .end { margin-left: auto; width: 1px; height: 64px; background: var(--rail); position: relative; }
+    .end::after { content: ""; position: absolute; left: -5px; bottom: -5px; width: 11px; height: 11px; border-radius: 50%; background: var(--pink); }
+
+    @media (max-width: 900px) {
+      .tl-in { margin-left: 0; }
+      .band { grid-template-columns: 1fr 1fr; gap: 0 24px; }
+      .now { grid-column: span 2; }
+    }
+    @media (max-width: 760px) {
+      /* 좁은 화면: 지그재그 대신 왼쪽 세로선 하나로 쭉 내려간다 */
+      .band { grid-template-columns: 1fr; border: 0; border-left: 1px solid var(--rail); padding: 0 0 24px 26px; }
+      .era.next { border-top: 0; padding-top: 24px; }
+      .era.next::before { top: 46px; }
+      .yr::before, .now::before { left: -26px; width: 26px; height: 0; top: 64px; border-left: 0; border-top: 1px solid var(--rail); }
+      .yr::after { left: -31px; top: 60px; }
+      .now { grid-column: auto; }
+      .now::after { left: -32px; top: 59px; }
+      .era { padding-left: 30px; }
+      .era-name { font-size: 30px; }
+      .end { margin-left: 0; }
+    }
+  </style>
+</head>
+<body class="dark map">
+  <div id="app"></div>
+
+  <script src="data.js?v=86"></script>
+  <script src="common.js?v=85"></script>
+  <script>
+    // 연대기 설계도: 내용은 전부 data.js(YEARS · PROJECTS · NOW)에서 가져온다. 이 파일은 배치만 한다.
+    // 인생 서사 문단 = 그해의 장면 · 한 일 · 막힌 것 · 배운 것 · 다음 해로 넘어간 이유를 한 문단으로 이은 것.
+    const first = YEARS[0], last = YEARS[YEARS.length - 1];
+    // 2026-11-24 시기 이름(정의)은 아직 정하지 않았다. 2022–2026 전체를 한 띠로 두고 키 퀘스천 두 개만 세운다.
+    const ERAS = [
+      { range: "2022–2026", name: "",
+        qs: ["내가 잘할 수 있는 일은 무엇일까?", "진짜 브랜드란 무엇일까?"], years: YEARS },
+    ];
+
+    const life = (y) => [y.scene, y.action, y.crisis, y.turn, y.bridge]
+      .filter((v) => !isTodo(v))
+      .map(txt)
+      .join(" ");
+
+    const yearCol = (y) => {
+      const ps = projectsOf(y.year);
+      return `
+      <article class="yr" id="y-${esc(y.year)}">
+        <h3>${esc(y.year)}${y.age ? `<small>(${esc(y.age)})</small>` : ""}</h3>
+        ${y.events && y.events.length ? `<ul class="ev">${y.events.map((e) => `<li>${esc(e)}</li>`).join("")}</ul>` : ""}
+        <p class="ttl">${esc(y.line)}</p>
+        <p class="life">${life(y)}</p>
+        ${y.nowLink ? `<div class="yq"><a class="btn primary" href="now.html?v=${BUILD}">지금 고민하는 질문 보기 →</a></div>` : ""}
+        ${ps.length ? `<div class="pl"><span class="lb">핵심 프로젝트</span>${ps.map((p) => `<div><a href="${projectUrl(p)}">${esc(p.title)} →</a></div>`).join("")}</div>` : ""}
+      </article>`;
+    };
+
+    const eraHead = (e, i) => `
+      <header class="era${i ? " next" : ""}">
+        <div class="era-range">${esc(e.range)}</div>
+        ${e.name ? `<div class="era-name">${esc(e.name)}</div>` : ""}
+        <div class="era-q"><span class="lb">KEY QUESTIONS</span>${e.qs.map((q) => `<p>${esc(q)}</p>`).join("")}</div>
+      </header>`;
+
+    const nowCol = () => `
+      <article class="now" id="now">
+        <div class="tag">Now</div>
+        <h3>${txt(NOW.conclusion)}</h3>
+        <p>${txt(NOW.why)}</p>
+        <div class="lb">함께하고 싶은 팀</div>
+        <p>${txt(NOW.lookingFor)}</p>
+        <div class="cta"><a class="btn primary" href="projects.html?v=14">프로젝트 전체 보기 →</a></div>
+      </article>`;
+
+    document.getElementById("app").innerHTML = `
+      ${nav("story")}
+      <header class="hero wrap">
+        <div class="eyebrow">${SITE.role ? `${esc(SITE.role)} · ` : ""}${esc(first.year)}–${esc(last.year)} · ${esc(first.age)}–${esc(last.age)}</div>
+        <h1>${br(SITE.logline)}</h1>
+        <p class="lead">${txt(SITE.intro)}</p>
+        <div class="cta">
+          <a class="btn primary" href="projects.html?v=14">프로젝트 바로 보기 →</a>
+          <a class="btn" href="#map">연대기 한눈에 보기 ↓</a>
+        </div>
+      </header>
+
+      <main class="tl" id="map"><div class="tl-in">
+        <div class="spine"><span>START · ${esc(first.year)}</span></div>
+        ${ERAS.map((e, i) => `
+          ${eraHead(e, i)}
+          <section class="band">
+            ${e.years.map(yearCol).join("")}
+          </section>`).join("")}
+        <div class="end"></div>
+      </div></main>
+
+      ${footer()}
+    `;
+    if (location.hash) document.getElementById(decodeURIComponent(location.hash.slice(1)))?.scrollIntoView();
+  </script>
+</body>
+</html>

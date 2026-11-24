@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>윤영 지금 고민</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700;900&display=swap">
+  <link rel="stylesheet" href="style.css?v=54">
+  <style>
+    /* 지금 고민: 질문 한 줄 + 그 질문을 붙든 이유 한 문단을 차례로 쌓는다 */
+    .qlist { list-style: none; margin: 0; padding: 0; counter-reset: q; }
+    .qlist li { counter-increment: q; padding: 28px 0; border-top: 1px solid var(--line); }
+    .qlist li:last-child { border-bottom: 1px solid var(--line); }
+    .qlist .qn { font-size: 12px; letter-spacing: .12em; color: var(--ink-3); margin-bottom: 8px; }
+    .qlist h3 { margin: 0 0 10px; font-family: "Noto Serif KR", serif; font-weight: 700; font-size: 22px; line-height: 1.5; color: var(--ink); }
+    .qlist p { margin: 0; font-size: 15px; line-height: 1.85; color: var(--ink-2); max-width: 760px; }
+    .qlist .qn { color: var(--pink); }
+    .qlist .ctable-wrap { margin-top: 18px; }
+    .qlinks { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+    .qlinks .btn { font-size: 13px; padding: 10px 16px; }
+    .qlist .ctable { table-layout: fixed; width: 100%; }
+    .qlist .ctable td, .qlist .ctable th { white-space: normal !important; }
+    .qlist .ctable td:not(:only-child), .qlist .ctable th:not(:only-child) { width: 50% !important; }
+    .qlist .ctable td { font-weight: 400 !important; vertical-align: top; }
+    .srcs { margin: 40px 0 0; padding: 0; list-style: none; font-size: 13px; color: var(--ink-3); }
+    .srcs li + li { margin-top: 6px; }
+    .srcs a { color: var(--ink-2); }
+  </style>
+</head>
+<body class="dark">
+  <div id="app"></div>
+
+  <script src="data.js?v=86"></script>
+  <script src="common.js?v=85"></script>
+  <script>
+    // 지금 고민: 내용은 전부 data.js의 CONCERNS에서 가져온다. 이 파일은 배치만 한다.
+    const item = (c) => `
+      <li>
+        <div class="qn">${esc(c.tag || "")}</div>
+        <h3>${txt(c.q)}</h3>
+        <p>${txt(c.note)}</p>
+        ${c.links ? `<div class="qlinks">${c.links.map((l) => `<a class="btn" href="${esc(l.href)}" target="_blank" rel="noopener">${esc(l.label)} →</a>`).join("")}</div>` : ""}
+        ${c.table ? `<div class="ctable-wrap"><table class="ctable"><thead><tr>${c.table.head.map((h) => `<th>${esc(h)}</th>`).join("")}</tr></thead><tbody>${c.table.rows.map((r) => `<tr>${r.map((v) => `<td>${esc(v)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>` : ""}
+      </li>`;
+
+    document.getElementById("app").innerHTML = `
+      ${nav("now")}
+      <header class="page-head wrap">
+        <div class="eyebrow">Now · 2026</div>
+        <h1>${esc(CONCERNS.title)}</h1>
+        <p>${txt(CONCERNS.intro)}</p>
+      </header>
+
+      <main class="wrap">
+        <ol class="qlist">${CONCERNS.items.map(item).join("")}</ol>
+        ${CONCERNS.sources ? `<ul class="srcs"><li>참고 자료</li>${CONCERNS.sources.map((x) => `<li><a href="${esc(x.href)}" target="_blank" rel="noopener">${esc(x.label)}</a></li>`).join("")}</ul>` : ""}
+      </main>
+
+      ${footer()}
+    `;
+  </script>
+</body>
+</html>

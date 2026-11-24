@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>윤영 케이스 스터디</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700;900&display=swap">
+  <link rel="stylesheet" href="style.css?v=54">
+</head>
+<body class="dark">
+  <div id="app"></div>
+
+  <script src="data.js?v=86"></script>
+  <script src="common.js?v=85"></script>
+  <script>
+    // 케이스 스터디 한 편: project.html?id=morado
+    // 순서: 대표 이미지 → 30초 요약 → 맥락 → 문제 → 가설 → 결정 → 실행 → 결과 → 회고
+    const id = new URLSearchParams(location.search).get("id");
+    const p = SHOWN.find((x) => x.id === id) || SHOWN[0];
+    const idx = SHOWN.indexOf(p);
+    const prev = SHOWN[idx - 1], next = SHOWN[idx + 1];
+    const yi = YEARS.findIndex((y) => y.year === p.year);
+    document.title = `${p.title} · ${SITE.name}`;
+
+    // 목록 칸: TODO면 안내 한 줄, 배열이면 그려서
+    const list = (v, draw) => (v && v.todo) ? `<p>${txt(v)}</p>` : draw(v);
+
+    const decisions = (ds) => `<div class="decisions">${ds.map((d, n) => `
+      <div class="decision">
+        <div class="d-no">결정 ${n + 1}</div>
+        <p class="d-choice"><b>고른 것</b>${txt(d.choice)}</p>
+        ${d.rejected ? `<p class="d-rejected"><b>버린 것</b>${txt(d.rejected)}</p>` : ""}
+        <p class="d-why"><b>이유</b>${txt(d.why)}</p>
+      </div>`).join("")}</div>`;
+
+    // 장면 설계: 시간 · 캡처 · 장면 · 왜 이 장면인가
+    const scenes = (sc) => `<div class="scenes">${sc.map((x) => `
+      <div class="scene">
+        ${x.img ? `<img src="${esc(asset(x.img))}" alt="${esc(x.time)} ${esc(x.scene)}" loading="lazy">` : `<div class="scene-ph"></div>`}
+        <div>
+          <div class="scene-time">${esc(x.time)}</div>
+          <h4>${txt(x.scene)}</h4>
+          <p>${txt(x.why)}</p>
+        </div>
+      </div>`).join("")}</div>`;
+
+    const steps = (ss) => `<ol class="csteps">${ss.map((s) => `
+      <li><h4>${txt(s.title)}</h4><p>${txt(s.detail)}</p></li>`).join("")}</ol>`;
+
+    // 막 구조: 스토리보드의 큰 흐름 (막마다 시간 · 이름 · 무슨 일이 일어나나)
+    const acts = (as) => `<ol class="acts">${as.map((a) => `
+      <li><div class="act-time">${esc(a.time)}</div><h4>${txt(a.name)}</h4><p>${txt(a.summary)}</p></li>`).join("")}</ol>`;
+
+    // 칸 값이 null이면 그 프로젝트에서는 그 칸을 숨긴다 (예: 뮤비는 결정 · 실행 과정 대신 스토리보드를 강조)
+    const has = (v) => v !== null && v !== undefined;
+    const para = (v) => Array.isArray(v) ? v.map((x) => `<p>${txt(x)}</p>`).join("") : `<p>${txt(v)}</p>`;
+    const storyboard = (p.acts || p.scenes)
+      ? `${p.acts ? `<h3 class="sub">막 구조</h3>${list(p.acts, acts)}` : ""}${p.scenes ? `<h3 class="sub">장면별 설계 — 왜 이 장면인가</h3>${scenes(p.scenes)}` : ""}`
+      : null;
+
+    // 막 구조(근거형): 막마다 무슨 일 · 왜 이렇게 짰나 · 근거
+    const actsWhy = (as) => `<ol class="acts">${as.map((a) => `
+      <li><div class="act-time">${esc(a.time)}</div><h4>${txt(a.name)}</h4><p>${txt(a.summary)}</p>
+        ${a.why ? `<p class="act-why"><b>왜</b>${txt(a.why)}</p>` : ""}
+        ${a.basis ? `<p class="act-basis"><b>근거</b>${txt(a.basis)}</p>` : ""}</li>`).join("")}</ol>`;
+
+    // 막 묶음: 막 하나 = 스토리 · 왜 · 근거 + 그 막에 속한 장면들
+    const actGroup = (g) => `
+      <div class="actgroup">
+        <div class="ag-head"><span class="ag-no">${esc(g.no)}</span><span class="act-time">${esc(g.time)}</span><h4>${txt(g.name)}</h4></div>
+        <dl class="ag-meta">
+          <div><dt>스토리</dt><dd>${txt(g.story)}</dd></div>
+          <div><dt>왜</dt><dd>${txt(g.why)}</dd></div>
+          <div><dt>근거</dt><dd>${txt(g.basis)}</dd></div>
+        </dl>
+        ${g.scenes && g.scenes.length ? `<div class="ag-scenes-head">장면</div>${scenes(g.scenes)}` : ""}
+      </div>`;
+
+    // 자유 구성 섹션 (p.blocks가 있으면 기본 칸 대신 이 순서로 그린다)
+    //   { id, title, body: [ {p}|{big}|{sub}|{table:{head,rows}}|{box:{label,text}}|{acts}|{scenes} ] }
+    const block = (b) =>
+      b.sub ? `<h3 class="sub">${txt(b.sub)}</h3>` :
+      b.big ? `<p class="big">${txt(b.big)}</p>` :
+      b.table ? `<div class="ctable-wrap"><table class="ctable"><thead><tr>${b.table.head.map((h) => `<th>${txt(h)}</th>`).join("")}</tr></thead><tbody>${b.table.rows.map((r) => `<tr>${r.map((c) => `<td>${txt(c)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>` :
+      b.box ? `<div class="identity"><span>${txt(b.box.label)}</span><p class="big">${txt(b.box.text)}</p></div>` :
+      b.acts ? (b.plain ? actsWhy(b.acts).replace('<ol class="acts">', '<ol class="acts plain">') : actsWhy(b.acts)) :
+      b.scenes ? scenes(b.scenes) :
+      b.imgs ? `<div class="cimgs" style="grid-template-columns:repeat(${b.imgs.length},minmax(0,1fr))">${b.imgs.map((m) => `<figure><img src="${esc(asset(m.src))}" alt="${esc(m.alt || "")}" loading="lazy">${m.cap ? `<figcaption>${txt(m.cap)}</figcaption>` : ""}</figure>`).join("")}</div>` :
+      b.img ? `<figure class="cimg"${b.w ? ` style="max-width:${Number(b.w)}px"` : ""}><img src="${esc(asset(b.img))}" alt="${esc(b.alt || "")}" loading="lazy">${b.cap ? `<figcaption>${txt(b.cap)}</figcaption>` : ""}</figure>` :
+      b.actGroup ? actGroup(b.actGroup) :
+      `<p>${txt(b.p)}</p>`;
+
+    // 섹션 목록: [id, 제목, 내용 HTML]
+    const sections = p.blocks ? p.blocks.map((s) => [s.id, s.title, s.body.map(block).join("")]) : p.kind === "log" ? [
+      ["question", "관찰 질문", `<p class="big">${txt(p.question)}</p>`],
+      ["place", "관찰한 곳", `<p>${txt(p.place)}</p>`],
+      ["observation", "관찰한 것", `<p>${txt(p.observation)}</p>`],
+      ["learning", "배운 것", `<p class="big">${txt(p.learning)}</p>`],
+    ] : [
+      ["context", "맥락과 제약", has(p.context) && para(p.context)],
+      ["problem", p.problemTitle || "문제 정의", has(p.problem) && (para(p.problem) + (has(p.identity) ? `<div class="identity"><span>각인시킬 존재</span><p class="big">${txt(p.identity)}</p></div>` : ""))],
+      ["hypothesis", "가설", has(p.hypothesis) && `<p class="big">${txt(p.hypothesis)}</p>`],
+      ["concept", "왜 이 컨셉인가", has(p.concept) && para(p.concept)],
+      ["audience", "누구에게, 어떤 메시지를", has(p.audience) && para(p.audience)],
+      ["decisions", "결정 — 고른 것과 버린 것", has(p.decisions) && list(p.decisions, decisions)],
+      ["storyboard", "스토리보드 설계 과정", storyboard],
+      ["steps", "실행 과정", has(p.steps) && list(p.steps, steps)],
+      ["style", "촬영 스타일", has(p.style) && para(p.style)],
+      ["result", "결과", `${p.verdict ? `<span class="verdict" data-v="${esc(p.verdict)}">${esc(p.verdict)}</span>` : ""}${para(p.result)}`],
+      ["retro", "회고 — 다시 한다면", has(p.retro) && para(p.retro)],
+    ].filter(([, , html]) => html);
+
+    const tldr = p.kind === "log" ? "" : `
+      <section class="tldr" aria-label="30초 요약">
+        <div class="tldr-head">${esc(p.tldrTitle || "30초 요약")}</div>
+        <dl>
+          ${[["문제", p.tldr.problem], [p.didLabel || "내가 한 일", p.tldr.did], ["결과", p.tldr.result], [p.learningLabel || "배운 것", p.tldr.learning]]
+            .filter(([, v]) => has(v)).map(([k, v]) => `<div><dt>${k}</dt><dd>${txt(v)}</dd></div>`).join("")}
+        </dl>
+      </section>`;
+
+    const facts = p.kind === "log"
+      ? [["기간", p.period], ["관찰한 곳", p.place]]
+      : [["기간", p.period], ["역할", p.role], ["팀", p.team], ["도구", p.tools]];
+
+    // 산출물: 바깥 링크(예: 유튜브)는 썸네일 카드로 — 누르면 새 탭에서 열린다
+    const linkCard = p.link ? `
+      <a class="linkcard" href="${esc(p.link.href)}" target="_blank" rel="noopener">
+        ${p.link.thumb ? `<img src="${esc(p.link.thumb)}" alt="" ${p.link.fallback ? `onerror="this.onerror=null;this.src='${esc(asset(p.link.fallback))}'"` : ""}>` : ""}
+        <div class="lc-body">
+          <div class="lc-site">${esc(p.link.site || "")}</div>
+          <div class="lc-title">${esc(p.link.title || p.link.label)}</div>
+          <div class="lc-url">${esc(p.link.href)}</div>
+        </div>
+        <span class="lc-play" aria-hidden="true">▶</span>
+      </a>` : "";
+    // 산출물은 따로 칸을 두지 않고, 본문 맨 위에 대표 이미지로 바로 보여 준다. 이미지가 없으면 자리만 표시.
+    const media = (p.media.length || linkCard)
+      ? linkCard + p.media.map((m) => `<figure><img src="${esc(asset(m.src))}" alt="${esc(m.caption || "")}"><figcaption>${esc(m.caption || "")}</figcaption></figure>`).join("")
+      : `<div class="empty">대표 이미지 자리 — 최종 결과물 한 장 <span class="todo">data.js의 media에 이미지 경로 추가</span></div>`;
+
+    document.getElementById("app").innerHTML = `
+      ${nav("projects")}
+      <header class="case-head wrap">
+        <a class="back" href="projects.html?v=14">← 프로젝트 전체</a>
+        <div class="eyebrow">${esc(p.year)} · ${esc(p.type)}${yi >= 0 ? ` · <a href="index.html#y-${esc(p.year)}">${chapterNo(yi)} ${esc(YEARS[yi].line)}</a>` : ""}</div>
+        <h1>${esc(p.title)}</h1>
+        <p class="lead">${txt(p.summary)}</p>
+        ${p.link ? `<a class="btn outlink" href="${esc(p.link.href)}" target="_blank" rel="noopener">${esc(p.link.label)} ↗</a>` : ""}
+        <div class="facts">${facts.filter(([, v]) => has(v)).map(([k, v]) => `<div><span class="k">${k}</span>${txt(v)}</div>`).join("")}</div>
+      </header>
+
+      <div class="wrap case">
+        <nav class="toc" aria-label="목차">
+          <div class="toc-head">목차</div>
+          <ol>
+            ${tldr ? `<li><a href="#tldr">${esc(p.tldrTitle || "30초 요약")}</a></li>` : ""}
+            ${sections.map(([sid, title]) => `<li><a href="#${sid}">${title}</a></li>`).join("")}
+          </ol>
+        </nav>
+
+        <article class="case-body">
+          <section class="media-top" id="media"><div class="media">${media}</div></section>
+          <div id="tldr">${tldr}</div>
+          ${sections.map(([sid, title, html], n) => `
+            <section class="csec" id="${sid}">
+              <h2><span>${String(n + 1).padStart(2, "0")}</span>${title}</h2>
+              ${html}
+            </section>`).join("")}
+
+          ${p.sources ? `<div class="sources"><h4>참고 자료</h4><ul>${p.sources.map((x) => `<li>${x.href ? `<a href="${esc(x.href)}" target="_blank" rel="noopener">${esc(x.label)}</a>` : esc(x.label)}</li>`).join("")}</ul></div>` : ""}
+
+          <div class="pager">
+            ${prev ? `<a href="${projectUrl(prev)}"><small>← 이전</small>${esc(prev.title)}</a>` : "<span></span>"}
+            ${next ? `<a class="nx" href="${projectUrl(next)}"><small>다음 →</small>${esc(next.title)}</a>` : "<span></span>"}
+          </div>
+        </article>
+      </div>
+
+      ${footer()}
+    `;
+    if (location.hash) document.getElementById(decodeURIComponent(location.hash.slice(1)))?.scrollIntoView();
+  </script>
+</body>
+</html>

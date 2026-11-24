@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>윤영 프로젝트</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700;900&display=swap">
+  <link rel="stylesheet" href="style.css?v=54">
+  <style>
+    .fsum { margin: 0; font-size: 14px; line-height: 1.7; color: var(--ink-2); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  </style>
+</head>
+<body class="dark">
+  <div id="app"></div>
+
+  <script src="data.js?v=86"></script>
+  <script src="common.js?v=85"></script>
+  <script>
+    // 프로젝트 모음: 모든 프로젝트를 같은 카드로 연도순 나열. 카드에는 종류 · 연도(작게) · 제목 · 한 줄 요약.
+    // 누르면 케이스 스터디 한 편(project.html)으로 간다.
+    const thumbSrc = (p) => p.thumb || (p.media[0] && p.media[0].src) || (p.link && p.link.fallback) || "";
+    const thumb = (p) => thumbSrc(p)
+      ? `<img src="${esc(asset(thumbSrc(p)))}" alt="">`
+      : `<span>${esc(p.type)}</span>`;
+
+    const card = (p) => `
+      <a class="card fcard" href="${projectUrl(p)}">
+        <div class="thumb">${thumb(p)}</div>
+        <div class="meta"><span>${esc(p.type)}</span><span>${esc(p.year)}</span></div>
+        <h3>${esc(p.title)}</h3>
+        <p class="fsum">${txt(p.summary)}</p>
+      </a>`;
+
+    const list = [...SHOWN].sort((a, b) => a.year.localeCompare(b.year));
+
+    document.getElementById("app").innerHTML = `
+      ${nav("projects")}
+      <header class="page-head wrap">
+        <div class="eyebrow">Projects · ${SHOWN.length}편</div>
+        <h1>프로젝트 모음</h1>
+        <p>카드를 누르면 한 편의 케이스 스터디로 이어집니다.</p>
+      </header>
+
+      <main class="wrap">
+        <div class="fgrid">${list.map(card).join("")}</div>
+      </main>
+
+      ${footer()}
+    `;
+  </script>
+</body>
+</html>
