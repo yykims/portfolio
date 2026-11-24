@@ -3,208 +3,287 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>창업 프로젝트 초안 · 피부 생활습관 PT 사업계획서</title>
+  <title>프로젝트 ③ 피부 생활습관 PT 사업기획서 · 윤영</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700;900&display=swap">
   <link rel="stylesheet" href="../style.css?v=54">
-  <style>
-    .wrap { max-width: 880px; }
-    .draft h2 { font-family: "Noto Serif KR", serif; font-size: 21px; margin: 44px 0 10px; }
-    .draft h3 { font-size: 16px; margin: 22px 0 6px; color: var(--ink); }
-    .draft p, .draft li { font-size: 15px; line-height: 1.85; color: var(--ink-2); }
-    .draft ol, .draft ul { padding-left: 20px; }
-    .assume, .key { border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; font-size: 14px; line-height: 1.8; color: var(--ink-2); background: var(--surface); }
-    .key { border-color: var(--ink-3); }
-    .key b { color: var(--ink); }
-    .back { display: inline-block; margin: 28px 0 0; font-size: 13px; color: var(--ink-3); }
-    .tw { overflow-x: auto; margin: 10px 0 6px; }
-    .draft table { width: 100%; border-collapse: collapse; font-size: 14px; line-height: 1.65; min-width: 520px; }
-    .draft th, .draft td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; color: var(--ink-2); }
-    .draft th { color: var(--ink); font-weight: 700; background: var(--surface); }
-    .src { font-size: 12.5px; color: var(--ink-3); line-height: 1.7; }
-    .src a { color: var(--ink-3); word-break: break-all; }
-    .tag { display: inline-block; font-size: 11.5px; padding: 1px 7px; border: 1px solid var(--line); border-radius: 999px; color: var(--ink-3); margin-left: 4px; }
-    .toc { font-size: 14px; color: var(--ink-3); line-height: 1.9; }
-  </style>
+  <link rel="stylesheet" href="plan.css?v=1">
 </head>
-<body class="dark">
-  <main class="wrap draft" style="padding-bottom:90px">
-    <a class="back" href="../now.html">← 지금 고민으로</a>
-    <header class="page-head" style="padding-left:0;padding-right:0">
-      <div class="eyebrow">창업 프로젝트 초안 · 사업계획서 v0 · 2026-11-24</div>
-      <h1>피부 생활습관 PT (가칭)</h1>
-      <p>트러블이 반복되는 20~30대 여성 직장인이 내 트러블과 겹치는 생활 패턴을 기록으로 찾고, 습관 하나를 끝까지 지키도록 돕는 서비스입니다.</p>
-    </header>
+<body class="dark plan">
+  <nav class="nav"><div class="wrap">
+    <a class="logo" href="../index.html">윤영</a>
+    <div class="links"><a href="../index.html">연대기</a><a href="../projects.html">프로젝트</a><a href="../now.html" class="on">질문</a></div>
+  </div></nav>
 
-    <div class="assume">가정: ① 운영자의 얼굴은 콘텐츠에 나오지 않는다 ② 보증금 없이 시작한다 ③ 가격 · 광고비 · 전환율은 공개된 기준값이 없어 모두 가정이며, 파일럿에서 실제로 잰다 ④ 의료 행위(진단 · 처방 · 치료 표현)는 하지 않는다</div>
-
-    <p class="toc">1 요약 · 2 문제 · 3 시장 정의 · 4 첫 고객 · 5 기존 대안과 빈자리 · 6 해결책 · 7 비즈니스 모델 · 8 단위경제 · 9 고객 모으기 · 10 성장 단계 · 11 규제와 표현 원칙 · 12 리스크 · 13 검증 계획 · 14 확인받고 싶은 것</p>
-
-    <h2>1. 요약</h2>
-    <div class="key">
-      <b>한 줄:</b> 트러블의 원인을 "제품"이 아니라 "내 생활 패턴"에서 찾고, 찾은 습관을 지키게 돕는 4주 프로그램과 유지 구독.<br>
-      <b>돈이 되는가 (현재 판단):</b> 아직 모른다. 구조상 이익이 나려면 두 조건이 동시에 맞아야 한다 — ① 고객 1명을 데려오는 비용이 1명에게 남는 돈보다 작을 것(광고보다 콘텐츠로 모으기) ② 코치 시간이 1명당 1시간 안팎일 것(AI 주간 리포트로 줄이기). 이 둘을 12주 검증으로 확인한다.<br>
-      <b>하지 않기로 한 것:</b> 보증금 챌린지(국내 선례가 수익 · 법적으로 불리), 효능을 약속하는 표현, 제품 판매를 먼저 하는 것.
+  <header class="case-head wrap">
+    <a class="back" href="../now.html">← 질문으로</a>
+    <div class="eyebrow">신규 프로젝트 ③ · 창업 · 사업기획서 v0</div>
+    <h1>피부 생활습관 PT (가칭)</h1>
+    <p class="lead">트러블이 반복되는 20~30대 여성 직장인이 내 트러블과 겹치는 생활 패턴을 기록으로 찾고, 습관 하나를 끝까지 지키도록 돕는 서비스입니다.</p>
+    <div class="facts">
+      <div><span class="k">고객</span>트러블이 반복되는 20~30대 여성 직장인</div>
+      <div><span class="k">상품</span>4주 트리거 찾기 프로그램 + 유지 구독</div>
+      <div><span class="k">검증 기간</span>12주</div>
+      <div><span class="k">검증 비용 (추정)</span>약 30만 원 이내</div>
     </div>
+  </header>
 
-    <h2>2. 문제</h2>
-    <p>문제는 해결책 없이 적었습니다. 모두 가설이며, 인터뷰로 확인합니다.</p>
-    <ol>
-      <li><b>원인을 모른다</b> — 수면 · 스트레스 · 식단 · 생리주기 등 의심 가는 게 여러 개라, 무엇이 내 트리거인지 모른다.</li>
-      <li><b>혼자 지키지 못한다</b> — 원인을 짐작해도 야근 · 회식 · 마감이 있는 일상에서 습관을 혼자 지키다 그만둔다.</li>
-      <li><b>잘하고 있는지 모른다</b> — 피부 변화는 느려서, 효과를 보기 전에 포기한다.</li>
-    </ol>
-    <p>지금 쓰는 대안: 화장품 바꾸기, 피부과, 이너뷰티 영양제, 피부 진단 앱, 유튜브 정보, 그리고 아무것도 안 하기(가장 강한 경쟁자).</p>
+  <div class="wrap case">
+    <aside class="toc">
+      <div class="toc-head">목차</div>
+      <ol>
+        <li><a href="#map">한눈에 보는 구성</a></li>
+        <li><a href="#tldr">30초 요약</a></li>
+        <li><a href="#problem">문제</a></li>
+        <li><a href="#market">시장 정의</a></li>
+        <li><a href="#customer">첫 고객</a></li>
+        <li><a href="#alt">기존 대안과 빈자리</a></li>
+        <li><a href="#solution">해결책</a></li>
+        <li><a href="#model">비즈니스 모델</a></li>
+        <li><a href="#unit">단위경제</a></li>
+        <li><a href="#channel">고객 모으기</a></li>
+        <li><a href="#growth">성장 단계</a></li>
+        <li><a href="#rule">규제와 표현 원칙</a></li>
+        <li><a href="#risk">리스크</a></li>
+        <li><a href="#test">검증 계획</a></li>
+        <li><a href="#ask">여쭙고 싶은 것</a></li>
+      </ol>
+    </aside>
 
-    <h2>3. 시장 정의</h2>
-    <div class="key"><b>[누가]</b> 트러블이 반복되는 20~30대 여성 직장인 <b>+ [해내려는 일]</b> 내 트러블과 겹치는 생활 패턴을 찾아, 바쁜 일상에서도 습관으로 관리하기</div>
-    <h3>근거</h3>
-    <div class="tw"><table>
-      <tr><th>항목</th><th>수치</th><th>해석</th></tr>
-      <tr><td>여드름 진료 인원 (2022, 건보공단)</td><td>12.2만 명, 2018년 대비 +29.4%. 20대가 47%</td><td>병원에 간 사람만 센 숫자라 시장 크기가 아니라 <b>하한선</b></td></tr>
-      <tr><td>그중 20~30대 여성</td><td>20대 28,823명 + 30대 12,058명 = 약 4.1만 명</td><td>병원까지 간 핵심 고객층의 최소 규모</td></tr>
-      <tr><td>1인당 연간 여드름 진료비 (2022)</td><td>83,375원 (여성 20대 77,669원)</td><td>급여 진료는 싸다 → 가격 기준선이 낮다는 위험 신호</td></tr>
-      <tr><td>국내 이너뷰티 시장</td><td>2024년 1조 원대 → 최근 2조 원 근접 (증권사 추정)</td><td>먹는 것 · 생활로 피부를 관리하려는 지출이 늘고 있다</td></tr>
-      <tr><td>성인 여성 여드름 유병률</td><td>연구별 12~54% (정의 · 표본 차이 큼)</td><td>한국 자체 수치는 확인 못 함</td></tr>
-    </table></div>
-    <p>전체 시장 크기(TAM)는 아직 숫자로 쓰지 않습니다. "20~30대 여성 인구 × 성인 여드름 유병률 × 생활 관리에 돈을 쓸 의향" 순서로 계산하되, 마지막 값은 인터뷰와 사전 신청으로 잽니다. <span class="tag">확인 필요: 심평원 개방포털 L70 2023~24년 연령 · 성별 통계</span></p>
+    <article class="case-body">
+      <section class="csec" id="map" style="padding-top:0">
+        <h2><span>00</span>한눈에 보는 사업기획서 구성</h2>
+        <p>사업기획서는 네 질문에 차례로 답합니다. 칸을 누르면 해당 내용으로 이동합니다.</p>
+        <div class="emap">
+          <div class="emap-group"><h3>1 · 왜 필요한가</h3><div class="emap-grid">
+            <a href="#problem"><span class="no">01</span><strong>문제</strong><span>원인을 모르고, 혼자 못 지키고, 잘하는지 모른다</span></a>
+            <a href="#market"><span class="no">02</span><strong>시장 정의</strong><span>[트러블 반복 20~30대 여성 직장인] + [생활 패턴 찾아 습관으로 관리]</span></a>
+            <a href="#customer"><span class="no">03</span><strong>첫 고객</strong><span>마감 · 야근 시즌마다 트러블이 올라오는 직장인</span></a>
+            <a href="#alt"><span class="no">04</span><strong>기존 대안 · 빈자리</strong><span>진단 · 제품은 많고, "지키게 돕는 곳"은 비어 있음</span></a>
+          </div></div>
+          <div class="emap-group"><h3>2 · 무엇을 파나</h3><div class="emap-grid">
+            <a href="#solution"><span class="no">05</span><strong>해결책</strong><span>4주 트리거 찾기 + 유지 구독, AI 주간 리포트</span></a>
+            <a href="#model"><span class="no">06</span><strong>비즈니스 모델</strong><span>프로그램 · 구독 · 제휴 커머스 · 브랜드 B2B, 보증금 없음</span></a>
+          </div></div>
+          <div class="emap-group"><h3>3 · 돈이 되는가</h3><div class="emap-grid">
+            <a href="#unit"><span class="no">07</span><strong>단위경제</strong><span>고객 1명 가치 약 3만 원(가정) → 고객 획득비가 훨씬 작아야</span></a>
+            <a href="#channel"><span class="no">08</span><strong>고객 모으기</strong><span>얼굴 없는 기록 · 캐릭터 콘텐츠로 무료 유입</span></a>
+            <a href="#growth"><span class="no">09</span><strong>성장 단계</strong><span>검증 → 유료 기수 → 제품화 → B2B</span></a>
+          </div></div>
+          <div class="emap-group"><h3>4 · 어떻게 실행하나</h3><div class="emap-grid">
+            <a href="#rule"><span class="no">10</span><strong>규제 · 표현 원칙</strong><span>치료 · 개선 표현 금지, 건강 기록은 별도 동의</span></a>
+            <a href="#risk"><span class="no">11</span><strong>리스크</strong><span>낮은 지불 의사, 효과 증명, 유입 비용</span></a>
+            <a href="#test"><span class="no">12</span><strong>검증 계획</strong><span>12주, 단계마다 통과 기준을 먼저 적음</span></a>
+          </div></div>
+        </div>
+      </section>
 
-    <h2>4. 첫 고객 (비치헤드)</h2>
-    <div class="key"><b>마감 · 야근 시즌마다 트러블이 올라오는 20대 후반~30대 초반 여성 직장인</b> 중, 최근 6개월 안에 트러블 때문에 돈을 쓴 적이 있고(화장품 · 피부과 · 영양제) 혼자 관리를 시도했다가 그만둔 사람</div>
-    <div class="tw"><table>
-      <tr><th>기준</th><th>판단</th></tr>
-      <tr><td>문제가 선명한가</td><td>악화 시기가 일정과 겹쳐서, 기록으로 패턴을 찾기 좋다</td></tr>
-      <tr><td>돈을 쓸 수 있나</td><td>직장인이라 소득이 있고, 이미 트러블에 지출 중이다</td></tr>
-      <tr><td>닿을 수 있나</td><td>인스타 콘텐츠 + 직장인 커뮤니티. 직접 아는 사람이 적어 콘텐츠가 핵심 경로다</td></tr>
-      <tr><td>제외</td><td>중등도 이상 여드름, 흉터, 갑작스러운 악화, 아토피 · 지루성 피부염 → 피부과 안내</td></tr>
-    </table></div>
+      <section class="tldr" id="tldr">
+        <div class="tldr-head">30초 요약</div>
+        <dl>
+          <div><dt>한 줄</dt><dd>트러블의 원인을 제품이 아니라 "내 생활 패턴"에서 찾고, 찾은 습관을 지키게 돕는다.</dd></div>
+          <div><dt>돈이 되나</dt><dd>아직 모릅니다. ① 고객을 광고가 아닌 콘텐츠로 모으고 ② 코치 시간을 1명당 1시간 안쪽으로 지켜야 남습니다. 12주 검증으로 확인합니다.</dd></div>
+          <div><dt>안 하는 것</dt><dd>보증금 챌린지, 효능을 약속하는 표현, 제품 판매부터 시작하기.</dd></div>
+          <div><dt>가정</dt><dd>운영자 얼굴은 나오지 않습니다. 가격 · 광고비 · 전환율은 공개 기준값이 없어 파일럿에서 잽니다.</dd></div>
+        </dl>
+      </section>
 
-    <h2>5. 기존 대안과 빈자리</h2>
-    <div class="tw"><table>
-      <tr><th>대안</th><th>해 주는 것</th><th>비어 있는 것</th></tr>
-      <tr><td>피부과</td><td>진단 · 처방 · 시술 (약 처방 1~2만 원대, 레이저 회당 10~30만 원, 병원별 상이)</td><td>생활 습관 설계와 지속 관리</td></tr>
-      <tr><td>올리브영 스킨스캔 · 피부 진단 앱</td><td>피부 상태 측정 → 제품 추천 (스킨스캔 누적 100만 건, 2025-12)</td><td>생활 패턴 추적, 지속 코칭</td></tr>
-      <tr><td>눔 (체중 관리)</td><td>기록 + 코치 메시지 피드백. 앱스토어 프로그램 ₩55,000~₩279,000</td><td>피부 영역 없음</td></tr>
-      <tr><td>챌린저스 (습관 챌린지)</td><td>참가비 걸고 습관 인증 → 현재는 브랜드 광고 기반 페이백으로 전환</td><td>개인 맞춤 원인 분석 없음</td></tr>
-      <tr><td>해외 아크네 코칭</td><td>1:1 식이 · 루틴 코칭, 월 $255~$633 (판매자 표기) · 로레알 Spotscan+ Coach는 무료지만 영국 한정</td><td>한국 미출시</td></tr>
-    </table></div>
-    <p><b>빈자리:</b> "기록 → 트리거 찾기 → 습관 설계 → 주간 리포트"를 하나로 묶은 국내 피부 서비스는 이번 조사에서 찾지 못했습니다. 없다고 단정할 수는 없어서, 검증 단계에서 다시 확인합니다.</p>
+      <section class="csec" id="problem">
+        <h2><span>01</span>문제</h2>
+        <p>해결책 없이 적은 문제 가설입니다. 인터뷰로 확인합니다.</p>
+        <ol>
+          <li><b>원인을 모른다</b> — 수면 · 스트레스 · 식단 · 생리주기 중 무엇이 내 트리거인지 모른다.</li>
+          <li><b>혼자 지키지 못한다</b> — 야근 · 회식 · 마감이 있는 일상에서 습관을 혼자 지키다 그만둔다.</li>
+          <li><b>잘하고 있는지 모른다</b> — 피부 변화가 느려 효과를 보기 전에 포기한다.</li>
+        </ol>
+        <p class="note">지금 쓰는 대안: 화장품 바꾸기, 피부과, 이너뷰티 영양제, 피부 진단 앱, 유튜브, 그리고 아무것도 안 하기(가장 강한 경쟁자).</p>
+      </section>
 
-    <h2>6. 해결책</h2>
-    <h3>① 4주 "트리거 찾기" 프로그램 (핵심 상품)</h3>
-    <ul>
-      <li><b>1~2주 · 관찰:</b> 매일 1분 기록(수면 · 스트레스 · 식단 · 생리주기 · 트러블 개수) + 같은 조건 사진. 판단 없이 쌓기만 한다.</li>
-      <li><b>2주 차 끝 · AI 리포트:</b> 트러블이 심한 날과 겹치는 패턴을 정리해 "유력한 트리거 후보 1~2개"를 보여 준다. 진단이 아니라 <b>내 기록에서 보이는 겹침</b>으로만 표현한다.</li>
-      <li><b>3~4주 · 실험:</b> 후보와 관련된 습관 하나를 정해 지켜 본다. 주 1회 코치가 내 일정에 맞게 조정한다. 성공 기준은 피부 결과가 아니라 <b>습관을 지킨 날 수</b>.</li>
-    </ul>
-    <h3>② 유지 구독</h3>
-    <p>프로그램 이후 기록 + 월간 리포트를 계속 받는 구독. 마감 시즌 전에 알림을 보내 "평소 악화되던 시기"를 미리 대비하게 한다.</p>
-    <h3>근거의 선 (어디까지 말할 수 있나)</h3>
-    <div class="tw"><table>
-      <tr><th>요인</th><th>연구 근거</th><th>서비스에서 쓰는 방식</th></tr>
-      <tr><td>고GI 식단</td><td>체계적 고찰(34편, 2022): 연관은 있으나 효과는 "보통 수준". 반대 결과 메타분석(2025)도 있음</td><td>기록 항목으로 쓰고, "원인"이라고 말하지 않음</td></tr>
-      <tr><td>유제품</td><td>관찰연구 메타분석 OR 1.25, 편향 · 이질성 큼</td><td>같음</td></tr>
-      <tr><td>수면 · 스트레스</td><td>연관 보고는 있으나 방향(원인/결과)이 불명확</td><td>같음</td></tr>
-      <tr><td>생리주기</td><td>생리 전 악화를 44~65%가 자가보고</td><td>기록 항목의 정당성이 비교적 높음</td></tr>
-    </table></div>
-    <p>결론: "사람마다 다른 겹침을 기록으로 찾는다"까지가 근거와 맞습니다. 이 방식이 실제로 트러블을 줄인다는 직접 연구(RCT)는 찾지 못했습니다. 그래서 약속하는 결과는 "트러블 감소"가 아니라 <b>"내 패턴을 알게 되고, 습관 하나를 지키게 된다"</b>입니다.</p>
+      <section class="csec" id="market">
+        <h2><span>02</span>시장 정의</h2>
+        <p class="big">[트러블이 반복되는 20~30대 여성 직장인] + [내 트러블과 겹치는 생활 패턴을 찾아, 바쁜 일상에서도 습관으로 관리하기]</p>
+        <div class="ctable-wrap"><table class="ctable">
+          <thead><tr><th>근거</th><th>수치</th><th>해석</th></tr></thead>
+          <tbody>
+            <tr><td>여드름 진료 인원 (2022, 건보공단)</td><td>12.2만 명, 2018년 대비 +29.4%. 20대가 47%</td><td>병원에 간 사람만 센 하한선</td></tr>
+            <tr><td>그중 20~30대 여성</td><td>약 4.1만 명 (20대 28,823 + 30대 12,058)</td><td>핵심 고객층의 최소 규모</td></tr>
+            <tr><td>1인당 연간 여드름 진료비</td><td>83,375원 (여성 20대 77,669원)</td><td>가격 기준선이 낮다는 위험 신호</td></tr>
+            <tr><td>국내 이너뷰티 시장</td><td>2024년 1조 원대 → 최근 2조 원 근접 (증권사 추정)</td><td>생활로 피부를 관리하려는 지출 증가</td></tr>
+            <tr><td>성인 여성 여드름 유병률</td><td>연구별 12~54%</td><td>한국 자체 수치는 확인 못 함</td></tr>
+          </tbody>
+        </table></div>
+        <p class="note">전체 시장 크기는 "20~30대 여성 인구 × 유병률 × 생활 관리에 돈을 쓸 의향"으로 계산하되, 마지막 값은 인터뷰와 사전 신청으로 잽니다. <span class="pill warn">확인 필요</span> 2023~24년 연령 · 성별 진료 통계</p>
+      </section>
 
-    <h2>7. 비즈니스 모델</h2>
-    <div class="tw"><table>
-      <tr><th>수익원</th><th>가격 (가설)</th><th>시점</th><th>메모</th></tr>
-      <tr><td>4주 트리거 찾기 프로그램</td><td>29,000 / 49,000 / 79,000원 중 테스트</td><td>2기부터</td><td>눔 프로그램(₩55,000~)과 피부과 연 진료비(약 8만 원) 사이</td></tr>
-      <tr><td>유지 구독</td><td>월 9,900원 (가설)</td><td>프로그램 수료 후</td><td>반복 매출의 핵심. 유지율이 사업성을 가른다</td></tr>
-      <tr><td>제휴 커머스</td><td>올리브영 쇼핑 큐레이터 링크 수수료 7%</td><td>구독자 생긴 뒤</td><td>효능 표현 금지 → "내 습관에 맞춘 도구" 수준으로만</td></tr>
-      <tr><td>브랜드 B2B</td><td>미정</td><td>데이터가 쌓인 뒤 (1년+)</td><td>챌린저스가 간 방향. 익명 · 동의 기반 생활 패턴 인사이트, 브랜드 협찬 챌린지</td></tr>
-    </table></div>
-    <p><b>보증금을 빼는 이유:</b> 챌린저스는 보증금(참가비)형으로 영업손실을 냈고, 브랜드 광고 기반으로 바꾼 뒤 2025년 매출 273억 원 · 영업이익 3.5억 원을 냈습니다(운영사 전체). 또 다른 서비스의 파산 사태 이후, 보증금 보관이 규제 사각지대라는 법률 의견이 나왔습니다. 처음부터 보증금 없이 설계합니다.</p>
+      <section class="csec" id="customer">
+        <h2><span>03</span>첫 고객</h2>
+        <p class="big">마감 · 야근 시즌마다 트러블이 올라오는 20대 후반~30대 초반 여성 직장인</p>
+        <div class="ctable-wrap"><table class="ctable">
+          <thead><tr><th>기준</th><th>판단</th></tr></thead>
+          <tbody>
+            <tr><td>문제가 선명한가</td><td>악화 시기가 일정과 겹쳐 기록으로 패턴을 찾기 좋다</td></tr>
+            <tr><td>돈을 쓸 수 있나</td><td>소득이 있고, 최근 6개월 안에 트러블에 돈을 쓴 사람을 고른다</td></tr>
+            <tr><td>닿을 수 있나</td><td>인스타 콘텐츠 + 직장인 커뮤니티</td></tr>
+            <tr><td>제외</td><td>중등도 이상 여드름, 흉터, 갑작스러운 악화, 아토피 · 지루성 피부염 → 피부과 안내</td></tr>
+          </tbody>
+        </table></div>
+      </section>
 
-    <h2>8. 단위경제 (모두 가정 — 파일럿에서 실측)</h2>
-    <p>공개된 국내 기준값(광고 단가 · 전환율 · 코칭 완주율)이 없어서, 숫자는 계산 틀을 보여 주기 위한 가정입니다.</p>
-    <div class="tw"><table>
-      <tr><th>항목</th><th>가정값</th><th>계산</th></tr>
-      <tr><td>프로그램 가격</td><td>49,000원</td><td></td></tr>
-      <tr><td>결제 수수료</td><td>약 3.5%</td><td>− 1,700원</td></tr>
-      <tr><td>AI · 도구 비용</td><td>1인 약 1,000원</td><td>− 1,000원</td></tr>
-      <tr><td>코치 시간</td><td>1인 1시간 × 시급 25,000원</td><td>− 25,000원</td></tr>
-      <tr><td><b>1인당 남는 돈 (공헌이익)</b></td><td></td><td><b>약 21,300원</b></td></tr>
-      <tr><td>구독 전환 · 유지</td><td>수료생 30%가 3개월 유지</td><td>+ 9,900 × 3 × 0.3 ≈ 8,900원</td></tr>
-      <tr><td><b>고객 1명의 가치 (6개월)</b></td><td></td><td><b>약 30,200원</b></td></tr>
-    </table></div>
-    <div class="key">
-      <b>판단 기준:</b> 고객 1명을 데려오는 비용(CAC)이 <b>약 3만 원보다 훨씬 작아야</b> 남는다. 광고 단가 사례는 광고주마다 CPC 480원~5,500원으로 편차가 커서, 유료 광고만으로는 맞추기 어렵다고 본다. 그래서 <b>콘텐츠(무료 유입)로 모으는 구조</b>가 전제다.<br>
-      <b>가장 큰 변수 두 개:</b> ① 코치 시간 — 1인 2시간이면 남는 돈이 거의 0원이 된다. AI 리포트로 1시간 안쪽을 지키는 게 AX의 역할이다. ② 구독 유지율.<br>
-      <b>손익분기 (가정):</b> 월 고정비 30만 원(도구 · 콘텐츠 제작 · 사업자 비용)이면, 콘텐츠로 모은 신규 고객 월 약 14명.
-    </div>
+      <section class="csec" id="alt">
+        <h2><span>04</span>기존 대안과 빈자리</h2>
+        <div class="ctable-wrap"><table class="ctable">
+          <thead><tr><th>대안</th><th>해 주는 것</th><th>비어 있는 것</th></tr></thead>
+          <tbody>
+            <tr><td>피부과</td><td>진단 · 처방 · 시술</td><td>생활 습관 설계와 지속 관리</td></tr>
+            <tr><td>올리브영 스킨스캔 · 진단 앱</td><td>피부 측정 → 제품 추천</td><td>생활 패턴 추적, 지속 코칭</td></tr>
+            <tr><td>눔 (체중)</td><td>기록 + 코치 피드백, ₩55,000~₩279,000</td><td>피부 영역 없음</td></tr>
+            <tr><td>챌린저스 (습관)</td><td>참가비 인증 → 브랜드 광고 기반 페이백으로 전환</td><td>개인 맞춤 원인 분석 없음</td></tr>
+            <tr><td>해외 아크네 코칭</td><td>1:1 코칭 월 $255~$633 (판매자 표기)</td><td>한국 미출시</td></tr>
+          </tbody>
+        </table></div>
+        <p><b>빈자리:</b> "기록 → 트리거 찾기 → 습관 설계 → 주간 리포트"를 하나로 묶은 국내 피부 서비스는 이번 조사에서 찾지 못했습니다. 없다고 단정하지 않고 검증 단계에서 다시 확인합니다.</p>
+      </section>
 
-    <h2>9. 고객 모으기: 얼굴 없는 콘텐츠</h2>
-    <ul>
-      <li><b>얼굴 대신 기록:</b> 운영자의 얼굴이 아니라 "기록 화면 · 패턴 그래프 · 캐릭터"가 주인공인 콘텐츠. 예: "야근 3일 뒤 트러블이 올라오는 사람의 2주 기록" 같은 익명 사례(동의 받은 것만).</li>
-      <li><b>캐릭터:</b> 캐릭터 브랜드(모라도)를 만든 경험으로, 서비스의 얼굴 역할을 할 캐릭터를 둔다.</li>
-      <li><b>콘텐츠 → 무료 도구 → 프로그램:</b> 무료 "2주 트러블 기록 시트"로 신청을 받고, 2주 뒤 기록을 바탕으로 프로그램을 제안한다.</li>
-      <li><b>근거 수준:</b> 얼굴 없는 웰니스 · 뷰티 계정이 성장한 검증된 사례는 찾지 못했다. 이것 자체가 검증할 가설이다.</li>
-    </ul>
+      <section class="csec" id="solution">
+        <h2><span>05</span>해결책</h2>
+        <ol class="csteps">
+          <li><h4>1~2주 · 관찰</h4><p>매일 1분 기록(수면 · 스트레스 · 식단 · 생리주기 · 트러블 개수) + 같은 조건 사진.</p></li>
+          <li><h4>2주 차 끝 · AI 리포트</h4><p>트러블이 심한 날과 겹치는 패턴을 정리해 "유력한 트리거 후보 1~2개"를 보여 줍니다. 진단이 아니라 내 기록에서 보이는 겹침으로만 표현합니다.</p></li>
+          <li><h4>3~4주 · 실험</h4><p>후보와 관련된 습관 하나를 지킵니다. 주 1회 코치가 일정에 맞게 조정. 성공 기준은 피부 결과가 아니라 습관을 지킨 날 수.</p></li>
+          <li><h4>이후 · 유지 구독</h4><p>기록 + 월간 리포트. 평소 악화되던 마감 시즌 전에 미리 알림.</p></li>
+        </ol>
+        <div class="ctable-wrap"><table class="ctable">
+          <thead><tr><th>요인</th><th>연구 근거</th><th>서비스에서 쓰는 방식</th></tr></thead>
+          <tbody>
+            <tr><td>고GI 식단</td><td>연관은 있으나 효과는 "보통 수준" (고찰 34편, 2022). 반대 결과 메타분석도 있음</td><td>기록 항목으로만, "원인"이라 말하지 않음</td></tr>
+            <tr><td>유제품</td><td>관찰연구 메타분석 OR 1.25, 편향 · 이질성 큼</td><td>같음</td></tr>
+            <tr><td>수면 · 스트레스</td><td>연관 보고는 있으나 방향이 불명확</td><td>같음</td></tr>
+            <tr><td>생리주기</td><td>생리 전 악화 44~65% 자가보고</td><td>기록 항목의 정당성이 비교적 높음</td></tr>
+          </tbody>
+        </table></div>
+        <p>약속하는 결과는 "트러블 감소"가 아니라 <b>"내 패턴을 알게 되고, 습관 하나를 지키게 된다"</b>입니다. 기록 코칭이 트러블을 줄인다는 직접 연구는 찾지 못했습니다.</p>
+      </section>
 
-    <h2>10. 성장 단계</h2>
-    <div class="tw"><table>
-      <tr><th>단계</th><th>기간</th><th>목표</th><th>운영 방식</th></tr>
-      <tr><td>0 · 검증</td><td>1~3개월</td><td>문제 · 지불 의사 · 지속률 확인</td><td>사람이 직접 운영 (구글폼 + 카카오톡 + AI 리포트)</td></tr>
-      <tr><td>1 · 유료 기수</td><td>4~9개월</td><td>월 신규 14명 이상, 구독 전환 확인</td><td>기수제, 리포트 자동화 고도화</td></tr>
-      <tr><td>2 · 제품화</td><td>10~18개월</td><td>코치 1명이 맡는 인원 확대</td><td>기록 앱 또는 웹앱, 제휴 커머스 시작</td></tr>
-      <tr><td>3 · 확장</td><td>18개월+</td><td>B2B 매출</td><td>동의 기반 패턴 인사이트로 브랜드 협업</td></tr>
-    </table></div>
+      <section class="csec" id="model">
+        <h2><span>06</span>비즈니스 모델</h2>
+        <div class="ctable-wrap"><table class="ctable">
+          <thead><tr><th>수익원</th><th>가격 (가설)</th><th>시점</th><th>메모</th></tr></thead>
+          <tbody>
+            <tr><td>4주 프로그램</td><td>29,000 / 49,000 / 79,000원 테스트</td><td>2기부터</td><td>눔 프로그램과 피부과 연 진료비(약 8만 원) 사이</td></tr>
+            <tr><td>유지 구독</td><td>월 9,900원</td><td>수료 후</td><td>반복 매출의 핵심</td></tr>
+            <tr><td>제휴 커머스</td><td>올리브영 큐레이터 링크 수수료 7%</td><td>구독자 생긴 뒤</td><td>효능 표현 없이 "도구" 수준으로만</td></tr>
+            <tr><td>브랜드 B2B</td><td>미정</td><td>1년 이후</td><td>동의 기반 패턴 인사이트, 브랜드 협찬 챌린지</td></tr>
+          </tbody>
+        </table></div>
+        <p><b>보증금을 빼는 이유:</b> 챌린저스는 보증금형으로 영업손실을 냈고, 브랜드 광고 기반으로 바꾼 뒤 2025년 매출 273억 원 · 영업이익 3.5억 원을 냈습니다. 다른 서비스의 파산 이후 보증금 보관이 규제 사각지대라는 법률 의견도 나왔습니다.</p>
+      </section>
 
-    <h2>11. 규제와 표현 원칙</h2>
-    <p>법률 자문이 아니며, 사업자 등록 전에 전문가 확인을 받습니다.</p>
-    <div class="tw"><table>
-      <tr><th>할 수 있는 표현</th><th>하지 않는 표현</th></tr>
-      <tr><td>"내 기록에서 트러블이 심한 날과 겹치는 패턴을 정리해 드립니다"</td><td>"여드름을 치료 · 개선 · 없애 준다" (돌려 말한 표현도 제재 사례 있음)</td></tr>
-      <tr><td>수면 · 식단 · 스트레스에 관한 일반 건강 습관 안내</td><td>사진을 보고 질환명을 말하거나, 약 · 연고 안내 (의료법 위험)</td></tr>
-      <tr><td>"필요하면 피부과 진료를 권합니다"</td><td>특정 피부과 · 시술로 유도 (비의료인 의료광고 위험)</td></tr>
-      <tr><td>본인 기록 기반 "나의 변화" 시각화</td><td>제품 · 영양제의 "피부 개선" 효능 암시, 치료 경험담형 후기</td></tr>
-    </table></div>
-    <p><b>개인정보:</b> 얼굴 사진은 일반 개인정보로 보는 해석이 있지만(2차 인용), 수면 · 생리주기 같은 건강 기록은 민감정보에 해당할 가능성이 큽니다. 별도 동의, 최소 수집, 보관 기간 명시로 설계합니다. <span class="tag">확인 필요: 개인정보보호법 제23조 원문</span></p>
+      <section class="csec" id="unit">
+        <h2><span>07</span>단위경제 (모두 가정)</h2>
+        <div class="ctable-wrap"><table class="ctable">
+          <thead><tr><th>항목</th><th>가정값</th><th>계산</th></tr></thead>
+          <tbody>
+            <tr><td>프로그램 가격</td><td>49,000원</td><td></td></tr>
+            <tr><td>결제 수수료</td><td>약 3.5%</td><td>− 1,700원</td></tr>
+            <tr><td>AI · 도구 비용</td><td>1인 약 1,000원</td><td>− 1,000원</td></tr>
+            <tr><td>코치 시간</td><td>1시간 × 25,000원</td><td>− 25,000원</td></tr>
+            <tr><td>1인당 남는 돈</td><td></td><td><b>약 21,300원</b></td></tr>
+            <tr><td>구독 (수료생 30%가 3개월)</td><td></td><td>+ 약 8,900원</td></tr>
+            <tr><td>고객 1명의 가치 (6개월)</td><td></td><td><b>약 30,200원</b></td></tr>
+          </tbody>
+        </table></div>
+        <ul>
+          <li><b>판단 기준:</b> 고객 획득비가 약 3만 원보다 훨씬 작아야 합니다. 광고 단가 사례는 클릭당 480원~5,500원으로 편차가 커서 콘텐츠 유입이 전제입니다.</li>
+          <li><b>가장 큰 변수:</b> 코치 시간(1인 2시간이면 남는 돈이 거의 0원)과 구독 유지율.</li>
+          <li><b>손익분기 (가정):</b> 월 고정비 30만 원이면 신규 고객 월 약 14명.</li>
+        </ul>
+      </section>
 
-    <h2>12. 리스크</h2>
-    <div class="tw"><table>
-      <tr><th>리스크</th><th>대응</th></tr>
-      <tr><td>지불 의사가 낮다 (피부과 연 진료비가 약 8만 원)</td><td>무료 기록 시트로 먼저 체감시키고, 가격 3개를 테스트한다</td></tr>
-      <tr><td>효과를 증명하기 어렵다</td><td>약속을 "패턴 발견 + 습관 지속"으로 한정하고, 피부 변화는 본인 기록으로만 보여 준다</td></tr>
-      <tr><td>유입 비용이 높다</td><td>광고 대신 콘텐츠. 광고는 소액 테스트로만</td></tr>
-      <tr><td>규제 위반</td><td>표현 원칙표를 모든 콘텐츠 검수에 사용</td></tr>
-      <tr><td>쉽게 따라 할 수 있다</td><td>쌓이는 익명 패턴 데이터 · 수료생 사례 · 캐릭터 브랜드가 경쟁 우위 후보</td></tr>
-    </table></div>
+      <section class="csec" id="channel">
+        <h2><span>08</span>고객 모으기</h2>
+        <ul>
+          <li><b>얼굴 대신 기록:</b> 기록 화면 · 패턴 그래프 · 캐릭터가 주인공. 동의받은 익명 사례만 씁니다.</li>
+          <li><b>캐릭터:</b> 캐릭터 브랜드(모라도)를 만든 경험으로 서비스의 얼굴이 될 캐릭터를 둡니다.</li>
+          <li><b>흐름:</b> 콘텐츠 → 무료 "2주 트러블 기록 시트" → 2주 뒤 프로그램 제안.</li>
+          <li><b>근거 수준:</b> 얼굴 없는 웰니스 · 뷰티 계정의 검증된 성장 사례는 찾지 못했습니다. 이 방식 자체가 검증할 가설입니다.</li>
+        </ul>
+      </section>
 
-    <h2>13. 검증 계획 (12주, 실험 전에 통과 기준을 먼저 적음)</h2>
-    <div class="tw"><table>
-      <tr><th>주</th><th>할 일</th><th>통과 기준 (가정)</th></tr>
-      <tr><td>1~2</td><td>20~30대 여성 직장인 10명 인터뷰 (과거 행동 위주 질문)</td><td>6명 이상이 "원인을 모름" 또는 "혼자 하다 그만둠" 경험</td></tr>
-      <tr><td>3~4</td><td>얼굴 없는 인스타 계정 개설, 콘텐츠 12개, 무료 기록 시트 배포</td><td>기록 시트 신청 50명</td></tr>
-      <tr><td>5~6</td><td>기록 폼 + AI 주간 리포트 스킬 제작, 무료 1기 5명 운영 시작</td><td>코치 시간 1인 1시간 이하</td></tr>
-      <tr><td>7~8</td><td>1기 4주 운영 완료, 결과 정리</td><td>기록 지속률 70% 이상, "패턴을 찾았다" 50% 이상</td></tr>
-      <tr><td>9~12</td><td>유료 2기 모집 (가격 3개 테스트) + 구독 제안</td><td>유료 5명 이상, 구독 전환 30% 이상</td></tr>
-    </table></div>
-    <p><b>예상 비용 (추정):</b> 약 30만 원 이내 — 인터뷰 감사 선물(10명), 광고 소액 테스트, 도구 비용. 사업자 등록과 통신판매업 신고는 유료 2기 전에 합니다.</p>
-    <p><b>판정:</b> 통과 기준을 넘지 못한 단계에서 멈추고, 해당 가설(문제 · 고객 · 가격)부터 다시 세웁니다.</p>
+      <section class="csec" id="growth">
+        <h2><span>09</span>성장 단계</h2>
+        <div class="ctable-wrap"><table class="ctable">
+          <thead><tr><th>단계</th><th>기간</th><th>목표</th><th>운영</th></tr></thead>
+          <tbody>
+            <tr><td>0 · 검증</td><td>1~3개월</td><td>문제 · 지불 의사 · 지속률 확인</td><td>구글폼 + 카카오톡 + AI 리포트</td></tr>
+            <tr><td>1 · 유료 기수</td><td>4~9개월</td><td>월 신규 14명 이상, 구독 전환</td><td>기수제, 리포트 자동화</td></tr>
+            <tr><td>2 · 제품화</td><td>10~18개월</td><td>코치 1명이 맡는 인원 확대</td><td>웹앱, 제휴 커머스</td></tr>
+            <tr><td>3 · 확장</td><td>18개월 이후</td><td>B2B 매출</td><td>브랜드 협업</td></tr>
+          </tbody>
+        </table></div>
+      </section>
 
-    <h2>14. 확인받고 싶은 것</h2>
-    <ol>
-      <li>"제품이 아니라 생활 패턴"이라는 출발점이 돈을 내는 문제로 보이시는지</li>
-      <li>보증금 없이 프로그램 + 구독으로 가는 구조가 맞는지, 처음부터 B2B(브랜드)를 염두에 둬야 하는지</li>
-      <li>얼굴 없이 콘텐츠로 고객을 모으는 방식이 현실적인지</li>
-    </ol>
+      <section class="csec" id="rule">
+        <h2><span>10</span>규제와 표현 원칙</h2>
+        <div class="ctable-wrap"><table class="ctable">
+          <thead><tr><th>할 수 있는 표현</th><th>하지 않는 표현</th></tr></thead>
+          <tbody>
+            <tr><td>"내 기록에서 트러블이 심한 날과 겹치는 패턴을 정리해 드립니다"</td><td>"치료 · 개선 · 없애 준다" (돌려 말한 표현도 제재 사례 있음)</td></tr>
+            <tr><td>수면 · 식단 · 스트레스 일반 건강 습관 안내</td><td>사진을 보고 질환명 말하기, 약 · 연고 안내</td></tr>
+            <tr><td>"필요하면 피부과 진료를 권합니다"</td><td>특정 피부과 · 시술로 유도</td></tr>
+            <tr><td>본인 기록 기반 "나의 변화" 시각화</td><td>제품 · 영양제 효능 암시, 치료 경험담형 후기</td></tr>
+          </tbody>
+        </table></div>
+        <p class="note">법률 자문이 아니며, 사업자 등록 전에 전문가 확인을 받습니다. 수면 · 생리주기 같은 건강 기록은 민감정보에 해당할 가능성이 커서 별도 동의와 최소 수집으로 설계합니다.</p>
+      </section>
 
-    <h2>근거 출처</h2>
-    <p class="src">
-      여드름 진료 인원 · 진료비(2022, 건보공단): <a href="http://www.docdocdoc.co.kr/news/articleView.html?idxno=3008079">청년의사</a> · <a href="https://kormedi.com/1608252/">코메디닷컴</a><br>
-      이너뷰티 시장(증권사 추정) · 올리브영: <a href="https://www.cosinkorea.com/mobile/article.html?no=57746">코스인코리아</a><br>
-      챌린저스 모델 전환 · 실적: <a href="https://news.mtn.co.kr/news-detail/2026062214005670349">머니투데이방송 (2026-06)</a><br>
-      보증금 모델 법률 의견: <a href="https://www.venturesquare.net/1029516/">벤처스퀘어 변호사 기고 (2026-01)</a><br>
-      식이와 여드름 체계적 고찰: <a href="https://pubmed.ncbi.nlm.nih.gov/35373155/">PubMed 35373155</a> · 유제품 메타분석: <a href="https://www.doi.org/10.3390/nu10081049">Nutrients 2018</a> · 수면 고찰: <a href="https://pubmed.ncbi.nlm.nih.gov/41236274/">PubMed 41236274</a> · 생리주기: <a href="https://pubmed.ncbi.nlm.nih.gov/11712049/">PubMed 11712049</a><br>
-      화장품 광고 가이드: <a href="https://mfds.go.kr/brd/m_768/view.do?page=1&seq=3659">식약처</a> · 개인정보(얼굴 사진): <a href="https://www.shinkim.com/kor/media/newsletter/3064">세종 뉴스레터</a><br>
-      눔 가격: <a href="https://apps.apple.com/kr/app/noom/id634598719?l=en">앱스토어 (2026-11-24 확인)</a> · 올리브영 큐레이터 수수료: <a href="https://m.oliveyoung.co.kr/m/mtn/affiliate/guide">공식 가이드</a><br>
-      일부 수치는 기사 · 검색 요약 기준이라, 최종본에 넣기 전 원문을 다시 확인합니다.
-    </p>
-  </main>
+      <section class="csec" id="risk">
+        <h2><span>11</span>리스크</h2>
+        <div class="ctable-wrap"><table class="ctable">
+          <thead><tr><th>리스크</th><th>대응</th></tr></thead>
+          <tbody>
+            <tr><td>지불 의사가 낮다</td><td>무료 기록 시트로 먼저 체감, 가격 3개 테스트</td></tr>
+            <tr><td>효과를 증명하기 어렵다</td><td>약속을 "패턴 발견 + 습관 지속"으로 한정</td></tr>
+            <tr><td>유입 비용이 높다</td><td>콘텐츠 중심, 광고는 소액 테스트만</td></tr>
+            <tr><td>규제 위반</td><td>표현 원칙표로 모든 콘텐츠 검수</td></tr>
+            <tr><td>쉽게 따라 할 수 있다</td><td>익명 패턴 데이터 · 수료생 사례 · 캐릭터 브랜드를 쌓기</td></tr>
+          </tbody>
+        </table></div>
+      </section>
+
+      <section class="csec" id="test">
+        <h2><span>12</span>검증 계획 (12주)</h2>
+        <div class="ctable-wrap"><table class="ctable">
+          <thead><tr><th>주</th><th>할 일</th><th>통과 기준 (가정)</th></tr></thead>
+          <tbody>
+            <tr><td>1~2</td><td>20~30대 여성 직장인 10명 인터뷰</td><td>6명 이상이 "원인 모름" 또는 "혼자 하다 그만둠"</td></tr>
+            <tr><td>3~4</td><td>얼굴 없는 인스타 계정, 콘텐츠 12개, 무료 기록 시트</td><td>기록 시트 신청 50명</td></tr>
+            <tr><td>5~6</td><td>기록 폼 + AI 리포트 제작, 무료 1기 5명 시작</td><td>코치 시간 1인 1시간 이하</td></tr>
+            <tr><td>7~8</td><td>1기 완료, 결과 정리</td><td>기록 지속률 70%, "패턴을 찾았다" 50%</td></tr>
+            <tr><td>9~12</td><td>유료 2기 (가격 3개) + 구독 제안</td><td>유료 5명, 구독 전환 30%</td></tr>
+          </tbody>
+        </table></div>
+        <p>통과 기준을 넘지 못한 단계에서 멈추고, 해당 가설부터 다시 세웁니다. 사업자 등록과 통신판매업 신고는 유료 2기 전에 합니다.</p>
+      </section>
+
+      <section class="csec" id="ask">
+        <h2><span>13</span>여쭙고 싶은 것</h2>
+        <ol>
+          <li>"제품이 아니라 생활 패턴"이라는 출발점이 돈을 내는 문제로 보이시는지</li>
+          <li>보증금 없이 프로그램 + 구독으로 가는 구조가 맞는지, 처음부터 브랜드 B2B를 염두에 둬야 하는지</li>
+          <li>얼굴 없이 콘텐츠로 고객을 모으는 방식이 현실적인지</li>
+        </ol>
+        <p class="src">
+          여드름 진료 통계(2022, 건보공단): <a href="http://www.docdocdoc.co.kr/news/articleView.html?idxno=3008079">청년의사</a> · <a href="https://kormedi.com/1608252/">코메디닷컴</a> ·
+          이너뷰티: <a href="https://www.cosinkorea.com/mobile/article.html?no=57746">코스인코리아</a> ·
+          챌린저스: <a href="https://news.mtn.co.kr/news-detail/2026062214005670349">MTN (2026-06)</a> ·
+          보증금 법률 의견: <a href="https://www.venturesquare.net/1029516/">벤처스퀘어 기고 (2026-01)</a> ·
+          식이 고찰: <a href="https://pubmed.ncbi.nlm.nih.gov/35373155/">PubMed 35373155</a> · 유제품: <a href="https://www.doi.org/10.3390/nu10081049">Nutrients 2018</a> · 수면: <a href="https://pubmed.ncbi.nlm.nih.gov/41236274/">PubMed 41236274</a> · 생리주기: <a href="https://pubmed.ncbi.nlm.nih.gov/11712049/">PubMed 11712049</a> ·
+          화장품 광고: <a href="https://mfds.go.kr/brd/m_768/view.do?page=1&seq=3659">식약처</a> ·
+          눔 가격: <a href="https://apps.apple.com/kr/app/noom/id634598719?l=en">앱스토어 (2026-11-24)</a> · 올리브영 큐레이터: <a href="https://m.oliveyoung.co.kr/m/mtn/affiliate/guide">공식 가이드</a>.
+          일부 수치는 기사 · 검색 요약 기준이라 최종본 전에 원문을 다시 확인합니다.
+        </p>
+      </section>
+    </article>
+  </div>
 </body>
 </html>
