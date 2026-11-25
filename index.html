@@ -32,6 +32,7 @@
     .era::before { content: ""; position: absolute; left: -11px; top: 46px; width: 20px; height: 20px; background: var(--pink); transform: rotate(45deg); }
     .era.next::before { top: 78px; }
     .era-range { font-family: var(--num); font-size: 26px; color: var(--ink-2); }
+    .era-note { margin: 6px 0 0; font-size: 13px; color: var(--ink-3); }
     .era-name { font-family: "Noto Serif KR", serif; font-weight: 900; font-size: 44px; color: var(--ink); line-height: 1.2; }
     .era-q { margin-top: 18px; max-width: 640px; }
     .era-q .lb { display: block; font-size: 11px; letter-spacing: .12em; color: var(--ink-3); margin-bottom: 6px; }
@@ -50,6 +51,8 @@
     .yr .ev { list-style: none; margin: 0 0 18px; padding: 0; font-size: 13.5px; color: var(--ink-2); }
     .yr .ev li::before { content: "· "; }
     .yr .ttl { margin: 0 0 8px; font-size: 15.5px; font-weight: 800; color: var(--ink); line-height: 1.45; }
+    .yr .ttl:has(+ .sub) { margin-bottom: 2px; }
+    .yr .sub { margin: 0 0 8px; font-size: 13.5px; font-weight: 600; color: var(--ink); line-height: 1.45; }
     .yr .life { margin: 0; font-size: 13.5px; line-height: 1.85; color: var(--ink-2); }
     .yr .pl { margin: 16px 0 0; padding: 12px 0 0; border-top: 1px solid var(--line); font-size: 13px; }
     .yr .pl div + div { margin-top: 4px; }
@@ -95,7 +98,7 @@
 <body class="dark map">
   <div id="app"></div>
 
-  <script src="data.js?v=99"></script>
+  <script src="data.js?v=145"></script>
   <script src="common.js?v=85"></script>
   <script>
     // 연대기 설계도: 내용은 전부 data.js(YEARS · PROJECTS · NOW)에서 가져온다. 이 파일은 배치만 한다.
@@ -103,7 +106,7 @@
     const first = YEARS[0], last = YEARS[YEARS.length - 1];
     // 2026-11-24 시기 이름(정의)은 아직 정하지 않았다. 2022–2026 전체를 한 띠로 두고 키 퀘스천 두 개만 세운다.
     const ERAS = [
-      { range: "2022–2026", name: "",
+      { range: "2022–2026", name: "", note: "브랜드를 만드는 요소를 한 해에 하나씩 배워 온 과정",
         qs: ["내가 잘할 수 있는 일은 무엇일까?", "진짜 브랜드란 무엇일까?"], years: YEARS },
     ];
 
@@ -119,8 +122,9 @@
         <h3>${esc(y.year)}${y.age ? `<small>(${esc(y.age)})</small>` : ""}</h3>
         ${y.events && y.events.length ? `<ul class="ev">${y.events.map((e) => `<li>${esc(e)}</li>`).join("")}</ul>` : ""}
         <p class="ttl">${esc(y.line)}</p>
+        ${y.sub ? `<p class="sub">${esc(y.sub)}</p>` : ""}
         <p class="life">${life(y)}</p>
-        ${y.nowLink ? `<div class="yq"><a class="btn primary" href="now.html?v=${BUILD}">지금 고민하는 질문 보기 →</a></div>` : ""}
+        ${y.nowLink ? `<div class="yq"><a class="btn primary" href="now.html?v=${BUILD}">사용자 관점에서 질문 요소 보기 →</a></div>` : ""}
         ${ps.length ? `<div class="pl"><span class="lb">핵심 프로젝트</span>${ps.map((p) => `<div><a href="${projectUrl(p)}">${esc(p.title)} →</a></div>`).join("")}</div>` : ""}
       </article>`;
     };
@@ -128,6 +132,7 @@
     const eraHead = (e, i) => `
       <header class="era${i ? " next" : ""}">
         <div class="era-range">${esc(e.range)}</div>
+        ${e.note ? `<p class="era-note">${esc(e.note)}</p>` : ""}
         ${e.name ? `<div class="era-name">${esc(e.name)}</div>` : ""}
         <div class="era-q"><span class="lb">KEY QUESTIONS</span>${e.qs.map((q) => `<p>${esc(q)}</p>`).join("")}</div>
       </header>`;
@@ -147,7 +152,7 @@
       <header class="hero wrap">
         <div class="eyebrow">${SITE.role ? `${esc(SITE.role)} · ` : ""}${esc(first.year)}–${esc(last.year)} · ${esc(first.age)}–${esc(last.age)}</div>
         <h1>${br(SITE.logline)}</h1>
-        <p class="lead">${txt(SITE.intro)}</p>
+        <p class="lead">${br(SITE.intro)}</p>
         <div class="cta">
           <a class="btn primary" href="projects.html?v=14">프로젝트 바로 보기 →</a>
           <a class="btn" href="#map">연대기 한눈에 보기 ↓</a>

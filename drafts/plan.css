@@ -21,3 +21,16 @@
 .emap-grid .no { font-family: var(--serif); font-size: 13px; font-weight: 700; color: var(--accent); }
 .emap-grid strong { font-size: 15.5px; }
 .emap-grid span { font-size: 13.5px; color: var(--ink-2); line-height: 1.55; }
+
+/* 린 캔버스 (9칸) */
+.lean { display: grid; grid-template-columns: repeat(5, 1fr); grid-template-areas: "problem solution uvp adv seg" "problem metric uvp channel seg" "cost cost cost revenue revenue"; gap: 8px; margin: 6px 0 10px; }
+.lean .lc { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px 13px; }
+.lean h4 { margin: 0 0 6px; font-size: 12.5px; font-weight: 800; letter-spacing: 0.04em; color: var(--accent); }
+.lean ul, .lean ol { margin: 0 !important; padding-left: 16px !important; }
+.lean li { font-size: 13.5px !important; line-height: 1.55; color: var(--ink-2); margin-bottom: 3px !important; }
+.lean .lc-big { font-size: 15.5px; font-weight: 700; line-height: 1.55; color: var(--ink); margin: 0 0 6px; }
+.lean .lc-sub { font-size: 12.5px; color: var(--ink-3); line-height: 1.5; margin: 6px 0 0; }
+.lc-problem { grid-area: problem; } .lc-solution { grid-area: solution; } .lc-uvp { grid-area: uvp; border-color: var(--accent) !important; }
+.lc-adv { grid-area: adv; } .lc-seg { grid-area: seg; } .lc-metric { grid-area: metric; } .lc-channel { grid-area: channel; }
+.lc-cost { grid-area: cost; } .lc-revenue { grid-area: revenue; }
+@media (max-width: 860px) { .lean { grid-template-columns: 1fr; grid-template-areas: "problem" "seg" "uvp" "solution" "channel" "revenue" "cost" "metric" "adv"; } }

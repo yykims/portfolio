@@ -12,7 +12,7 @@
 <body class="dark">
   <div id="app"></div>
 
-  <script src="data.js?v=99"></script>
+  <script src="data.js?v=145"></script>
   <script src="common.js?v=85"></script>
   <script>
     // 케이스 스터디 한 편: project.html?id=morado
@@ -72,8 +72,8 @@
         <div class="ag-head"><span class="ag-no">${esc(g.no)}</span><span class="act-time">${esc(g.time)}</span><h4>${txt(g.name)}</h4></div>
         <dl class="ag-meta">
           <div><dt>스토리</dt><dd>${txt(g.story)}</dd></div>
-          <div><dt>왜</dt><dd>${txt(g.why)}</dd></div>
-          <div><dt>근거</dt><dd>${txt(g.basis)}</dd></div>
+          ${g.why ? `<div><dt>왜</dt><dd>${txt(g.why)}</dd></div>` : ""}
+          ${g.basis ? `<div><dt>근거</dt><dd>${txt(g.basis)}</dd></div>` : ""}
         </dl>
         ${g.scenes && g.scenes.length ? `<div class="ag-scenes-head">장면</div>${scenes(g.scenes)}` : ""}
       </div>`;
@@ -116,7 +116,7 @@
       <section class="tldr" aria-label="30초 요약">
         <div class="tldr-head">${esc(p.tldrTitle || "30초 요약")}</div>
         <dl>
-          ${[["문제", p.tldr.problem], [p.didLabel || "내가 한 일", p.tldr.did], ["결과", p.tldr.result], [p.learningLabel || "배운 것", p.tldr.learning]]
+          ${(p.tldrRows || [["문제", p.tldr.problem], [p.didLabel || "내가 한 일", p.tldr.did], ["결과", p.tldr.result], [p.learningLabel || "배운 것", p.tldr.learning]])
             .filter(([, v]) => has(v)).map(([k, v]) => `<div><dt>${k}</dt><dd>${txt(v)}</dd></div>`).join("")}
         </dl>
       </section>`;
