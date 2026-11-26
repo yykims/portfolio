@@ -7,13 +7,13 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700;900&display=swap">
-  <link rel="stylesheet" href="style.css?v=54">
+  <link rel="stylesheet" href="style.css?v=55">
 </head>
 <body class="dark">
   <div id="app"></div>
 
-  <script src="data.js?v=221"></script>
-  <script src="common.js?v=85"></script>
+  <script src="data.js?v=225"></script>
+  <script src="common.js?v=86"></script>
   <script>
     // 케이스 스터디 한 편: project.html?id=morado
     // 순서: 대표 이미지 → 30초 요약 → 맥락 → 문제 → 가설 → 결정 → 실행 → 결과 → 회고
@@ -61,10 +61,17 @@
       : null;
 
     // 막 구조(근거형): 막마다 무슨 일 · 왜 이렇게 짰나 · 근거
-    const actsWhy = (as) => `<ol class="acts">${as.map((a) => `
-      <li><div class="act-time">${esc(a.time)}</div><h4>${txt(a.name)}</h4><p>${txt(a.summary)}</p>
+    //   a.imgs가 있으면(여정 카드) 왼쪽 글 · 오른쪽 목업으로 나눈다. 빈 배열이면 a.empty 문구로 자리만 비워 둔다.
+    const actImgs = (a) => a.imgs.length
+      ? `<div class="act-imgs">${a.imgs.map((m) => `<figure><img src="${esc(asset(m.src))}" alt="${esc(m.alt || "")}" loading="lazy">${m.cap ? `<figcaption>${txt(m.cap)}</figcaption>` : ""}</figure>`).join("")}</div>`
+      : `<div class="act-imgs empty"><span>${txt(a.empty || "—")}</span></div>`;
+    const actsWhy = (as) => `<ol class="acts">${as.map((a) => {
+      const t = `<div class="act-time">${esc(a.time)}</div><h4>${txt(a.name)}</h4><p>${txt(a.summary)}</p>
         ${a.why ? `<p class="act-why"><b>왜</b>${txt(a.why)}</p>` : ""}
-        ${a.basis ? `<p class="act-basis"><b>근거</b>${txt(a.basis)}</p>` : ""}</li>`).join("")}</ol>`;
+        ${a.basis ? `<p class="act-basis"><b>근거</b>${txt(a.basis)}</p>` : ""}`;
+      return `
+      <li>${a.imgs ? `<div class="act-txt">${t}</div>${actImgs(a)}` : t}</li>`;
+    }).join("")}</ol>`;
 
     // 막 묶음: 막 하나 = 스토리 · 왜 · 근거 + 그 막에 속한 장면들
     const actGroup = (g) => `
@@ -85,7 +92,7 @@
       b.big ? `<p class="big">${txt(b.big)}</p>` :
       b.table ? `<div class="ctable-wrap"><table class="ctable"><thead><tr>${b.table.head.map((h) => `<th>${txt(h)}</th>`).join("")}</tr></thead><tbody>${b.table.rows.map((r) => `<tr>${r.map((c) => `<td>${txt(c)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>` :
       b.box ? `<div class="identity"><span>${txt(b.box.label)}</span><p class="big">${txt(b.box.text)}</p></div>` :
-      b.acts ? (b.plain ? actsWhy(b.acts).replace('<ol class="acts">', '<ol class="acts plain">') : actsWhy(b.acts)) :
+      b.acts ? actsWhy(b.acts).replace('<ol class="acts">', `<ol class="acts${b.plain ? " plain" : ""}${b.journey ? " journey" : ""}">`) :
       b.scenes ? scenes(b.scenes) :
       b.imgs ? `<div class="cimgs" style="grid-template-columns:repeat(${b.imgs.length},minmax(0,1fr))">${b.imgs.map((m) => `<figure><img src="${esc(asset(m.src))}" alt="${esc(m.alt || "")}" loading="lazy">${m.cap ? `<figcaption>${txt(m.cap)}</figcaption>` : ""}</figure>`).join("")}</div>` :
       b.img ? `<figure class="cimg"${b.w ? ` style="max-width:${Number(b.w)}px"` : ""}><img src="${esc(asset(b.img))}" alt="${esc(b.alt || "")}" loading="lazy">${b.cap ? `<figcaption>${txt(b.cap)}</figcaption>` : ""}</figure>` :

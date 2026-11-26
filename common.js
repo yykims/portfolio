@@ -19,7 +19,7 @@ const chapterNo = (i) => `제${i + 1}장`;
 const SHOWN = PROJECTS.filter((p) => !p.hidden);
 const projectsOf = (year) => SHOWN.filter((p) => p.year === year);
 // 페이지를 고칠 때마다 BUILD를 올리면, 브라우저가 예전 페이지를 기억해 두고 보여 주는 일이 없다
-const BUILD = "35";
+const BUILD = "36";
 const asset = (src) => /^https?:/.test(src) ? src : `${src}?v=${BUILD}`;
 const projectUrl = (p) => `project.html?id=${encodeURIComponent(p.id)}&v=${BUILD}`;
 

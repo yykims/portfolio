@@ -384,3 +384,17 @@ footer small { grid-column: 1 / -1; font-size: 12.5px; color: var(--ink-3); }
 .cimgs figure { margin: 0; }
 .cimgs img { display: block; width: 100%; border-radius: 10px; border: 1px solid var(--line); }
 .cimgs figcaption { font-size: 12px; color: var(--ink-3); margin-top: 6px; text-align: center; }
+
+/* 여정 카드: 단계 하나 = 한 줄, 왼쪽 글 · 오른쪽 목업 */
+.acts.journey { grid-template-columns: 1fr; gap: 14px; }
+.acts.journey li { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 24px; align-items: start; padding: 20px; }
+.act-imgs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.act-imgs figure { margin: 0; }
+.act-imgs figure:first-child:nth-last-child(odd) { grid-column: 1 / -1; }
+.act-imgs img { display: block; width: 100%; border-radius: 8px; border: 1px solid var(--line); }
+.act-imgs figcaption { font-size: 12px; color: var(--ink-3); margin-top: 6px; }
+.act-imgs.empty { display: flex; align-items: center; justify-content: center; min-height: 160px; border: 1px dashed var(--line); border-radius: 8px; }
+.act-imgs.empty span { font-size: 13px; color: var(--ink-3); text-align: center; padding: 0 16px; }
+@media (max-width: 760px) {
+  .acts.journey li { grid-template-columns: 1fr; }
+}
