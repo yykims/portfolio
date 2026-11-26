@@ -282,11 +282,11 @@ const PROJECTS = [
       { id: "retro", title: "회고", body: [
         { table: { head: ["", "판단"], rows: [
           ["통한 것", "어둠은 이겨 내야 한다는 통념을 뒤집고, 내 안의 악을 받아들이는 장면으로 '인정형'이라는 의미를 만들었습니다"],
-          ["놓친 것", "공식 유통 경로가 유통사 유튜브 채널 하나에 머물렀고, 뮤직비디오를 본 사람을 음원 재생으로 데려갈 길도 없었습니다. 곡은 해외 스트리밍인 Spotify에도 등록돼 있었지만, 2026년 11월 기준 월별 리스너는 2명입니다. 스토리보드는 메시지에 맞게 짰지만, 경로를 넓히고 재생으로 잇는 안은 제안하지 못했습니다"],
+          ["놓친 것", "공식 유통 경로가 유통사 유튜브 채널 하나에 머물렀습니다. 스토리보드는 메시지에 맞게 짰지만, 뮤직비디오 숏폼과 아티스트 개인 SNS까지 경로를 넓히는 안은 제안하지 못했습니다"],
         ] } },
         { sub: "다시 한다면" },
-        { p: "메시지는 내 안의 악을 숨기던 타겟을 향했지만, 뮤직비디오가 닿은 곳은 OST 중심의 대중형 채널 하나였고 조회수는 채널의 평소 수준에 머물렀습니다. 반응은 오히려 바깥에서 왔습니다. 댓글 7개 가운데 4개가 영어 · 스페인어 댓글이나 이모지를 남긴 해외 계정으로 보였고, 그중 \"The creepiness I love\"는 컨셉 자체에 반응했습니다. 표본은 작지만, 앞에서 정의한 핵심 고객 집단과 맞는 신호입니다. 그리고 음원 수익은 조회수가 아니라 반복 재생에서 나오기 때문에, 이 신호를 넓게 퍼뜨리는 것보다 재생으로 이어 가는 것이 더 중요했습니다." },
-        { p: "다시 한다면 이 핵심 고객 집단에서 출발해 도달 → 전환 → 반복의 순서로 짜겠습니다. 도달은 영어 · 스페인어 자막을 달아 다크 컨셉 팬이 모이는 커뮤니티와 Korean Indie 블로그나 Reddit r/kindie 같은 해외 K-인디 큐레이터로 넓히고, 스토리보드도 앙마가 \"의심하지 말아, 내가 곧 너니\"라고 속삭이는 15초, 1인 2역 분할 화면처럼 따로 봐도 컨셉이 전해지는 장면으로 쪼개겠습니다. 전환은 숏폼과 뮤직비디오 설명란 · 고정 댓글에서 Spotify 재생으로 바로 잇고, 반복은 앙마의 세계관을 이어 갈 다음 곡과 플레이리스트 저장으로 다시 들을 이유를 만들겠습니다. 이 안을 감독님과 아티스트께 제안드리겠습니다." },
+        { p: "메시지는 내 안의 악을 숨기던 타겟을 향했지만, 뮤직비디오가 닿은 곳은 OST 중심의 대중형 채널 하나였고 조회수는 채널의 평소 수준에 머물렀습니다. 반응은 오히려 바깥에서 왔습니다. 댓글 7개 가운데 4개가 영어 · 스페인어 댓글이나 이모지를 남긴 해외 계정으로 보였고, 그중 \"The creepiness I love\"는 컨셉 자체에 반응했습니다. 표본은 작지만, 앞에서 정의한 핵심 고객 집단과 맞는 신호입니다." },
+        { p: "다시 한다면 이 핵심 고객 집단에서 출발해 유통을 거꾸로 짜겠습니다. 영어 · 스페인어 자막을 먼저 달아 다크 컨셉 팬이 모이는 커뮤니티에 내보낸 뒤, Korean Indie 블로그나 Reddit r/kindie 같은 해외 K-인디 큐레이터로 넓히겠습니다. 스토리보드도 앙마가 \"의심하지 말아, 내가 곧 너니\"라고 속삭이는 15초, 1인 2역 분할 화면처럼 따로 봐도 컨셉이 전해지는 장면으로 쪼개, 숏폼과 아티스트 개인 SNS로 퍼질 수 있게 감독님과 아티스트께 제안드리겠습니다. 아무에게나 넓게 퍼뜨리는 대신 이 컨셉을 이미 찾아다니는 집단에게 먼저 닿게 하는 것이, 뮤직비디오를 본 사람이 곡을 다시 찾아 듣게 만들어 음원 재생을 높이는 출발점이라고 봅니다." },
       ] },
     ],
     sources: [
@@ -312,7 +312,6 @@ const PROJECTS = [
       { label: "Wood, Perunovic & Lee (2009). Positive Self-Statements: Power for Some, Peril for Others. Psychological Science", href: "https://journals.sagepub.com/doi/10.1111/j.1467-9280.2009.02370.x" },
       { label: "Oliver & Raney (2011). Entertainment as Pleasurable and Meaningful. Journal of Communication", href: "https://onlinelibrary.wiley.com/doi/10.1111/j.1460-2466.2011.01585.x" },
       { label: "Hartmann & Goldhoorn (2011). Horton and Wohl Revisited: Exploring Viewers' Experience of Parasocial Interaction. Journal of Communication", href: "https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1460-2466.2011.01595.x" },
-      { label: "Spotify — GOBI 아티스트 페이지 · 월별 리스너 2명, 2026-11-27 검색 기준", href: "https://open.spotify.com/artist/41FtSxkOWDmA5CIjtAAVKG" },
       { label: "YouTube — 「앙마」 뮤직비디오 댓글 7개 (2026-11-26 확인)", href: "https://www.youtube.com/watch?v=Qh6MTYKgHCg" },
       { label: "Reddit — 다크 · 호러 컨셉 컴백을 아쉬워하는 K팝 팬 글 (r/kpoptrulyuncensored · r/kpopthoughts · r/kpop_uncensored, 검색 결과 요약)", href: "https://www.reddit.com/r/kpoptrulyuncensored/comments/1u5b2fi/where_are_the_dark_horror_concepts_in_kpop/" },
       { label: "PAPER — Meet Dreamcatcher: K-Pop's Most Horrifying Girl Group (2018.06.07, 첫 해외 투어 브라질)", href: "https://www.papermag.com/dreamcatcher-kpop" },
